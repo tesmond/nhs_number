@@ -18,11 +18,10 @@ def is_valid_nhs_number(nhs_number: str, ignore_formatting: bool = False) -> boo
         check_digit += int(digit) * (10 - i)
 
     # Divide the total by 11 and establish the remainder.
-    remainder = check_digit % 11
+    remainder: int = check_digit % 11
 
     # Subtract the remainder from 11 to give the check digit.
-    check_digit = 11 - remainder
-    if check_digit == 11:
+    if (check_digit := 11 - remainder) == 11:
         check_digit = 0
 
     # Check digit should match remainder in a valid NHS number.
