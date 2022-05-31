@@ -11,7 +11,7 @@ def is_valid_nhs_number(nhs_number: str, ignore_formatting: bool = False) -> boo
     if not re.match(r"^\d{10}$", nhs_number):
         return False
 
-    # Multiply each of the first nine digits by a weighting factor
+    # Multiply each of the digits by their weighting factor
     check_digit: int = 0
     for i, digit in enumerate(nhs_number):
         # Add the results of each multiplication together.
