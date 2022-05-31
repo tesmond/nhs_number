@@ -25,8 +25,7 @@ def is_valid_nhs_number(nhs_number: str, ignore_formatting: bool = False) -> boo
     if check_digit == 11:
         check_digit = 0
 
-    # Check the remainder matches the check digit.
-    # If it does not, the NHS NUMBER is invalid.
+    # Check digit should match remainder in a valid NHS number.
     if remainder != check_digit:
         return False
 
