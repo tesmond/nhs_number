@@ -12,16 +12,16 @@ def is_valid_nhs_number(nhs_number: str, ignore_formatting: bool = False) -> boo
         return False
 
     # Multiply each of the digits by their weighting factor
-    check_digit: int = 0
+    weighted_total: int = 0
     for i, digit in enumerate(nhs_number):
         # Add the results of each multiplication together.
-        check_digit += int(digit) * (10 - i)
+        weighted_total += int(digit) * (10 - i)
 
     # Divide the total by 11 and establish the remainder.
-    remainder: int = check_digit % 11
+    remainder: int = weighted_total % 11
 
     # Subtract the remainder from 11 to give the check digit.
-    check_digit = 0 if remainder == 0 else 11 - remainder
+    check_digit: int = 0 if remainder == 0 else 11 - remainder
 
     # Check digit should match remainder in a valid NHS number.
     if remainder != check_digit:

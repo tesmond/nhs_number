@@ -3,7 +3,7 @@
 While old NHS Numbers are 9 digits the new NHS numbers have 10 digits with the 10th digit being a check digit. The code in this repo is just a simple function that validates a 10 digit NHS Number returning a true or false outcome based on the input number.
 
 ## NHS Number Validation
-The NHS NUMBER is 10 numeric digits in length. The tenth digit is a check digit used to confirm its validity. The check digit is validated using the Modulus 11 algorithm and the use of this algorithm is mandatory. There are 5 stepsvin the validation of the check digit:
+The NHS NUMBER is 10 numeric digits in length. The tenth digit is a check digit used to confirm its validity. The check digit is validated using the Modulus 11 algorithm and the use of this algorithm is mandatory. There are 5 steps in the validation of the check digit:
 
 ### Step 1
 Multiply each of the first nine digits by a weighting factor as follows:
