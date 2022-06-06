@@ -20,7 +20,4 @@ def is_valid_nhs_number(nhs_number: str, ignore_formatting: bool = False) -> boo
 
     # Expected check digit should match last digit in a valid NHS number
     expected_check_digit: int = 0 if remainder == 0 else 11 - remainder
-    if expected_check_digit != int(nhs_number[9]):
-        return False
-
-    return True
+    return expected_check_digit == int(nhs_number[9])
