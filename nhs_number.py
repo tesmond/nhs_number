@@ -11,16 +11,14 @@ def is_valid_nhs_number(nhs_number: str, ignore_formatting: bool = False) -> boo
     if not re.match(r"^\d{10}$", nhs_number):
         return False
 
-    # Multiply each of the digits by their weighting factor
-    # Add the results of each multiplication together.
-    weighted_total: int = 0
-    for i in range(9):
-        weighted_total += int(nhs_number[i]) * (10 - i)
+    # Multiply each of the first 9 digits by their weighting factor
+    # Add the results of each multiplication together
+    total: int = sum(int(nhs_number[i]) * (10 - i) for i in range(9))
 
-    # Divide the total by 11 and establish the remainder.
-    remainder: int = weighted_total % 11
+    # Divide the total by 11 and establish the remainder
+    remainder: int = total % 11
 
-    # Expected check digit should match last digit in a valid NHS number.
+    # Expected check digit should match last digit in a valid NHS number
     expected_check_digit: int = 0 if remainder == 0 else 11 - remainder
     if expected_check_digit != int(nhs_number[9]):
         return False
