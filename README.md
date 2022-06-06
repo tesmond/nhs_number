@@ -34,4 +34,4 @@ Subtract the remainder from 11 to give the check digit.
 If the result is 11 then a check digit of 0 is used. If the result is 10 then the NHS NUMBER is invalid and not used.
 
 ### Step 5
-Check the remainder matches the check digit. If it does not, the NHS NUMBER is invalid.
+Check the last digit matches the check digit. If it does not, the NHS NUMBER is invalid.
