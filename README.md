@@ -35,3 +35,7 @@ If the result is 11 then a check digit of 0 is used. If the result is 10 then th
 
 ### Step 5
 Check the last digit matches the check digit. If it does not, the NHS NUMBER is invalid.
+
+# Performance
+
+While this is a simple function, why not use it to explore pythons performance. My initial working version took 0.014 seconds to validate 10,000 calls. So optimizing this obviously seems like a waste of time, when would you ever need to validate 1 million NHS numbers per second? However, it is a useful exercise as you might need to perform similar translations on a much larger volume of data. The regex check was relatively slow compared to a simpler length and digit check. Using sum() was slower than incrementing a total in a for loop. Using ord rather than int for the string to digit conversion was also faster. All of these changes combined to a reduction in runtime of 50% to 0.007 seconds to validate 10,000 calls.

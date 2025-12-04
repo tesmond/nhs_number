@@ -1,4 +1,7 @@
+import timeit
+
 import pytest
+
 from nhs_number import is_valid_nhs_number
 
 
@@ -43,3 +46,15 @@ from nhs_number import is_valid_nhs_number
 )
 def test_is_valid_nhs_number(input, valid, ignore_formatting):
     assert is_valid_nhs_number(input, ignore_formatting) == valid
+
+
+def test_performance():
+    # Test performance with a valid NHS number
+    setup = "from nhs_number import is_valid_nhs_number"
+    stmt = "is_valid_nhs_number('1111111111')"
+    time_taken = timeit.timeit(stmt, setup, number=10000)
+
+    # Assert that 10,000 calls take less than 0.01 seconds may fail on slow machines
+    # Used to make sure recent changes did not degrade performance significantly
+    print(f"Time taken for 10,000 calls: {time_taken} seconds")
+    assert time_taken < 0.01
